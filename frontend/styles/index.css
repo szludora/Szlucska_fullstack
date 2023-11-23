@@ -1,0 +1,16 @@
+body {
+    background-image: url(../imgs/3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.table {
+    width: 40%;
+    --bs-table-bg: transparent;
+    backdrop-filter: blur(20px);
+    margin: 10em auto auto auto;
+    --bs-table-color: white;
+    --bs-table-hover-color: white;
+    font-size: 1em;
+}
