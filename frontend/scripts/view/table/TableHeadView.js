@@ -2,7 +2,7 @@ class TableHeadView {
     #obj;
     constructor(obj, parent) {
       this.#obj = obj;
-      parent.append(this.create());
+      parent.html(this.create());
     }
     create() {
       let txt = `<tr>`;
@@ -10,7 +10,7 @@ class TableHeadView {
         const element = this.#obj[key];
         txt += `<th>${element}</th>`;
       }
-      txt += `<th><th><th><th>`
+      txt += `<th></th><th></th>`
       txt += `</tr>`;
       return txt;
     }

@@ -18,7 +18,7 @@ class LiteratureFactory extends Factory
     {
         return [
             'title' => fake('hu_HU')->realText(15),
-            'evaluation' => rand(0, 100)/ 10,
+            'evaluation' => rand(0, 100) / 10,
             'description' => fake('hu_HU')->realText(50),
         ];
     }

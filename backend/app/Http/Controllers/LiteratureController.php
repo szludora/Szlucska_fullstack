@@ -21,8 +21,12 @@ class LiteratureController extends Controller
     {
         $lit = new Literature();
         $lit->title = $request->title;
-        $lit->evaluation = $request->evaluation;
-        $lit->description = $request->description;
+        if($request->evaluation !== NULL){
+            $lit->evaluation = $request->evaluation;
+        }
+        if($request->description !== NULL){
+            $lit->description = $request->description;
+        }
         $lit->save();
     }
 
@@ -30,13 +34,18 @@ class LiteratureController extends Controller
     {
         $lit = Literature::find($id);
         $lit->title = $request->title;
-        $lit->evaluation = $request->evaluation;
-        $lit->description = $request->description;
+        if($request->evaluation !== NULL){
+            $lit->evaluation = $request->evaluation;
+        }
+        if($request->description !== NULL){
+            $lit->description = $request->description;
+        }
         $lit->save();
     }
 
     public function destroy($id)
     {
         Literature::find($id)->delete();
+        return Literature::all();
     }
 }

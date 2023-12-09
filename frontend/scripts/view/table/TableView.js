@@ -6,7 +6,7 @@ class TableView {
   #list;
   constructor(list, parent) {
     this.#list = list;
-    parent.append(`
+    parent.html(`
     <table class='table table-hover'>
     <thead></thead>
     <tbody></tbody>

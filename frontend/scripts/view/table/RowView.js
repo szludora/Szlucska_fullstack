@@ -45,7 +45,7 @@ class RowView {
           }
         }
       }
-      txt += `<td><button class="deleteButton btn btn-danger">Delete</button></td></tr>`;
+      txt += `<td><button class="deleteButton btn btn-danger">Delete</button></td><td><button class="modifyButton btn btn-primary">Módosít</button></td></tr>`;
       return txt;
     }
     trigger(e) {

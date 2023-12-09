@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('literatures', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->decimal('evaluation', 4, 1);
-            $table->string('description');
+            $table->decimal('evaluation', 4, 1)->default('5');
+            $table->string('description')->default('There is no description for this literature');
             $table->timestamps();
         });
     }

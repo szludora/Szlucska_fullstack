@@ -13,4 +13,14 @@ body {
     --bs-table-color: white;
     --bs-table-hover-color: white;
     font-size: 1em;
+    padding: 30px;
+    border-radius: 30px !important;
 }
+
+form{
+    backdrop-filter: blur(20px);
+    width: 40%;
+    padding: 50px;
+    border-radius: 30px;
+}
+
