@@ -1,10 +1,13 @@
-import { descriptor } from "./descriptor.js";
+// import { descriptor } from "./descriptor.js";
+// import DataService from "../../model/DataService.js";
 import RowView from "./RowView.js";
 import TableHeadView from "./TableHeadView.js";
 
 class TableView {
   #list;
-  constructor(list, parent) {
+  constructor(list, parent, descriptor) {
+    // this.ds = DataService.getInstance()
+    this.descriptor = descriptor
     this.#list = list;
     parent.html(`
     <table class='table table-hover'>

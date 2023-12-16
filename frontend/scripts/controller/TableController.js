@@ -1,28 +1,30 @@
-import DataService from "../model/DataService.js";
 import TableView from "../view/table/TableView.js";
 
 export default class TableController {
-  constructor() {
-    this.dataService = new DataService();
-    this.dataService.getData("literatures", this.show);
+  constructor(ds, parent, descriptor) {
+    this.ds = ds;
+
+    this.ds.getData("literatures", (data) => {
+      this.show(data,parent,descriptor);
+    });
+
     $(window).on("deleteRow", (e) => {
-      this.dataService.delData("literatures", e.detail, this.show);
+      this.ds.delData("literatures", e.detail, (data) => {
+        this.show(data,parent,descriptor);
+      });
     });
+
     $(window).on("postSubmit", (e) => {
-      this.dataService.postData(e.detail);
+      this.ds.postData(e.detail, "literatures", (data) => {
+        this.show(data,parent,descriptor);
+      });
     });
   }
-  // reload() {
-  //   location.reload()
-  // }
-  show(list) {
-    new TableView(list, $(".tabla"));
-  }
-  reload(){
-    this.show()
+
+  show(list,parent, descriptor) {
+    new TableView(list, parent, descriptor);
   }
   errorMessage(error) {
     console.log("Error message: ", error);
   }
 }
-

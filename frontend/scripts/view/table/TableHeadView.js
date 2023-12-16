@@ -7,10 +7,9 @@ class TableHeadView {
     create() {
       let txt = `<tr>`;
       for (const key in this.#obj) {
-        const element = this.#obj[key];
-        txt += `<th>${element}</th>`;
+        txt += `<th>${this.#obj[key]['label']}</th>`;
       }
-      txt += `<th></th><th></th>`
+      txt += `<th>Műveletek</th><th></th>`
       txt += `</tr>`;
       return txt;
     }
