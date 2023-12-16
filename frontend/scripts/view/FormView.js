@@ -2,9 +2,14 @@ export default class FormView {
   #formData = {};
 
   constructor(parent, desc) {
-    parent.html("<form class='align-items-center m-auto bg-transparent'>");
+    this.formTheme =
+      "<form class='align-items-center m-auto bg-transparent' id='form'></form>";
+    this.parent = parent;
+    this.parent.html(this.formTheme);
     this.formElem = parent.find("form");
+    this.formElem.html("")
     this.makeHTML(desc);
+    this.submitElem = this.formElem.find("#submit");
     this.getInfoForm();
   }
 
@@ -23,8 +28,9 @@ export default class FormView {
           txt += `<div class="mb-4 m-auto"><textarea id="${e.id}" class="${e.class}" placeholder="${e.placeholder}" rows="${e.rows}"></textarea></div>`;
           break;
       }
+     
     }
-    txt += `<div class="m-auto w-50"><input type="submit" id="submit" value="Küld" class="btn btn-success w-100"/></div>`;
+    txt += `<div class="m-auto w-50"><button id="submit" class="btn btn-success w-100">Küld</button></div>`;
     this.formElem.append(txt);
   }
 
@@ -45,5 +51,16 @@ export default class FormView {
   trigger(e) {
     const event = new CustomEvent(e, { detail: this.#formData });
     window.dispatchEvent(event);
+  }
+
+  // e - element
+  modifyThis(e, desc) {
+    this.formElem.find("#title").prepend(`<div class="m-auto w-50"><input value="${e.id}" readonly/></div>`);
+    this.formElem.find("#title").val(e.title);
+    this.formElem.find("#description").val(e.description);
+    this.formElem.find("#evaluation").val(e.evaluation);
+    this.formElem.find("#evaluation").append(`<div class="m-auto w-50"><button id="submit" class="btn btn-success w-100">Küld</button></div>`)
+    $("html").animate({ scrollTop: $("#form").offset().top }, 800);
+    this.getInfoForm();
   }
 }

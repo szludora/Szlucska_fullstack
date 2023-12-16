@@ -42,6 +42,8 @@ class LiteratureController extends Controller
             $lit->description = $request->description;
         }
         $lit->save();
+        return Literature::all();
+
     }
 
     public function destroy($id)
@@ -55,6 +57,7 @@ class LiteratureController extends Controller
         return [
             'id' => [
                 'id' => 'id',
+                'class' => 'form-control',
                 'label' => 'id',
             ],
             'title' => [
@@ -78,7 +81,7 @@ class LiteratureController extends Controller
                 'id' => 'description',
                 'label' => 'Leírás',
                 'type' => 'textarea',
-                'rows' => '15',
+                'rows' => '3',
                 'placeholder' => 'Leírás',
                 'class' => 'w-100'
             ],

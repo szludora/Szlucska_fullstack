@@ -7,8 +7,14 @@ class RowView {
     this.id = this.#obj.id;
     this.parent.append(this.createRow());
     this.deleteButton = this.parent.find(".deleteButton:last");
+    this.modifyButton = this.parent.find(".modifyButton:last");
+
     this.deleteButton.on("click", (e) => {
       this.trigger("deleteRow");
+    });
+
+    this.modifyButton.on("click", (e) => {
+      this.trigger("modify");
     });
   }
 
@@ -22,8 +28,11 @@ class RowView {
   }
 
   trigger(e) {
-    const event = new CustomEvent(e, { detail: this.id });
+    const event = new CustomEvent(e, { detail: this });
     window.dispatchEvent(event);
+  }
+  getObj(){
+    return this.#obj
   }
 }
 export default RowView;

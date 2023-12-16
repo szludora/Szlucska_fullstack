@@ -35,8 +35,8 @@ export default class DataService {
 
   postData(data, vegpont, callback) {
     axios
-      .post(vegpont, data)
-      .then(function (response) {
+    .post(vegpont, data)
+    .then(function (response) {
         //response data --> backenden írtuk
         callback(response.data);
       })
@@ -44,6 +44,20 @@ export default class DataService {
         console.log(error);
       })
       .finally(function () {});
+  }
+  putData(data, vegpont, id, callback) {
+    let teljesVegpont = vegpont + "/" + parseInt(id)
+    axios
+    .put(teljesVegpont, data)
+    .then(function (response) {
+        //response data --> backenden írtuk
+        callback(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+      });
   }
 
   delData(vegpont, id, callback) {
