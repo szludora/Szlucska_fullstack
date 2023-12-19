@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Literature;
 use Illuminate\Http\Request;
 
+use function PHPSTORM_META\type;
+
 class LiteratureController extends Controller
 {
     public function index()
@@ -57,6 +59,7 @@ class LiteratureController extends Controller
         return [
             'id' => [
                 'id' => 'id',
+                'type' => 'id',
                 'class' => 'form-control',
                 'label' => 'id',
             ],

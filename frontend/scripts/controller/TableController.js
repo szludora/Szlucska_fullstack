@@ -20,28 +20,24 @@ export default class TableController {
         this.show(data, parent, descriptor);
       });
     });
-
     $(window).on("modify", (e) => {
+      // $(window).off("postSubmit");
       let endPoint = "literatures/" + e.detail.id;
       this.ds.getData(endPoint, (data) => {
         let form = new FormView($(".urlap"), descriptor);
-        form.modifyThis(data, descriptor)
-
-
-        $(window).on("postSubmit", (e) => {
-          this.ds.putData(data, "literatures", data.id, (datas) => {
-            this.show(datas, parent, descriptor);
+        form.modifyThis(data, descriptor);
+        $(window).on("putSubmit", (e) => {
+          this.ds.putData(e.detail, "literatures", e.detail.id, (data) => {
+            this.show(data, parent, descriptor);
           });
         });
-
-       
       });
     });
   }
 
   show(list, parent, descriptor) {
     let form = new TableView(list, parent, descriptor);
-    return form
+    return form;
   }
   errorMessage(error) {
     console.log("Error message: ", error);
