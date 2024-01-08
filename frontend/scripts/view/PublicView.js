@@ -22,45 +22,4 @@ export default class PublicView {
       this.divElem.append(txt);
     }
   }
-
-  getInfoForm() {
-    this.idElem = this.divElem.find("#id");
-    this.submitElem = this.divElem.find("#submit");
-    this.titleElem = this.divElem.find("#title");
-    this.evaElem = this.divElem.find("#evaluation");
-    this.submitElem.on("click", (event) => {
-      event.preventDefault();
-      this.#formData.id = this.idElem.val();
-      this.#formData.title = this.titleElem.val();
-      this.#formData.evaulation = this.evaElem.val();
-      if (this.#formData.id) {
-        console.log("put");
-        this.trigger("putSubmit");
-      } else {
-        console.log("post");
-        this.trigger("postSubmit");
-      }
-    });
-  }
-
-  trigger(e) {
-    const event = new CustomEvent(e, { detail: this.#formData });
-    window.dispatchEvent(event);
-  }
-
-  // e - element
-  modifyThis(e, list) {
-    this.divElem.find("#id").css("visibility", "visible");
-    this.divElem.find("#id").val(e.id);
-    this.divElem.find("#title").val(e.title);
-    this.divElem.find("#description").val(e.description);
-    this.divElem.find("#evaluation").val(e.evaluation);
-    this.divElem
-      .find("#evaluation")
-      .append(
-        `<div class="m-auto w-50"><button id="submit" class="btn btn-success w-100">Küld</button></div>`
-      );
-    $("html").animate({ scrollTop: $("#form").offset().top }, 800);
-    this.getInfoForm();
-  }
 }
