@@ -22,6 +22,7 @@ class LiteratureController extends Controller
     public function store(Request $request)
     {
         $lit = new Literature();
+        $lit->author = $request->author;
         $lit->title = $request->title;
         if ($request->evaluation !== NULL) {
             $lit->evaluation = $request->evaluation;
@@ -36,6 +37,7 @@ class LiteratureController extends Controller
     public function update(Request $request, $id)
     {
         $lit = Literature::find($id);
+        $lit->author = $request->author;
         $lit->title = $request->title;
         if ($request->evaluation !== NULL) {
             $lit->evaluation = $request->evaluation;
@@ -62,6 +64,13 @@ class LiteratureController extends Controller
                 'type' => 'id',
                 'class' => 'form-control',
                 'label' => 'id',
+            ],
+            'author' => [
+                'id' => 'author',
+                'label' => 'Szerző',
+                'type' => 'text',
+                'placeholder' => 'Szerző',
+                'class' => 'form-control'
             ],
             'title' => [
                 'id' => 'title',

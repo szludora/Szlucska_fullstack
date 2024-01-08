@@ -9,6 +9,7 @@ class Literature extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'author',
         'title',
         'evaluation',
         'description',

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,7 @@ class LiteratureFactory extends Factory
     public function definition(): array
     {
         return [
+            'author' => User::all()->random()->id,
             'title' => fake('hu_HU')->realText(15),
             'evaluation' => rand(0, 100) / 10,
             'description' => fake('hu_HU')->realText(50),
