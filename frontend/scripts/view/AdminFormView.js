@@ -1,4 +1,4 @@
-export default class FormView {
+export default class AdminFormView {
   #formData = {};
 
   constructor(parent, desc) {
@@ -66,7 +66,7 @@ export default class FormView {
   }
 
   // e - element
-  modifyThis(e, desc) {
+  modifyThis(e) {
     this.formElem.find("#id").css("visibility", "visible");
     this.formElem.find("#id").val(e.id);
     this.formElem.find("#title").val(e.title);

@@ -1,0 +1,14 @@
+body {
+    background-image: url(../imgs/rs3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.navbar-toggler {
+    transform: translateX(-40px);
+    background-color: #13ba5696;
+}
+
+.navbar-brand{
+    transform: translateX(10px);
+}

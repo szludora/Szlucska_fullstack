@@ -1,4 +1,4 @@
-import FormView from "../view/FormView.js";
+import AdminFormView from "../view/AdminFormView.js";
 import TableView from "../view/table/TableView.js";
 
 export default class TableController {
@@ -24,7 +24,7 @@ export default class TableController {
       // $(window).off("postSubmit");
       let endPoint = "literatures/" + e.detail.id;
       this.ds.getData(endPoint, (data) => {
-        let form = new FormView($(".urlap"), descriptor);
+        let form = new AdminFormView($(".urlap"), descriptor);
         form.modifyThis(data, descriptor);
         $(window).on("putSubmit", (e) => {
           this.ds.putData(e.detail, "literatures", e.detail.id, (data) => {
