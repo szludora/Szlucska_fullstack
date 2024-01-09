@@ -37,7 +37,7 @@ class LiteratureController extends Controller
     public function update(Request $request, $id)
     {
         $lit = Literature::find($id);
-        $lit->authorId = $request->authorId;
+        // $lit->authorId = $request->authorId;
         $lit->title = $request->title;
         if ($request->evaluation !== NULL) {
             $lit->evaluation = $request->evaluation;
