@@ -2,7 +2,7 @@ import Book from "./div/Book.js";
 
 export default class PublicView {
   constructor(dsList, parent, ds) {
-    this.ls = localStorage.shopcart=[];
+    this.ls = window.localStorage;
     this.bookList = [];
     this.ds = ds;
     this.myShopCart = [];
@@ -12,10 +12,12 @@ export default class PublicView {
     this.finalParent = this.parent.find(".row");
     this.makeHTML();
 
+
     $(window).on("shop", (e) => {
-      this.myShopCart.push(e.detail);
-      this.ls.push(JSON.stringify(e.detail.data))
-      console.log(this.ls)
+      this.myShopCart.push(JSON.stringify(e.detail.data));
+      console.log("myShopCart: ", this.myShopCart);
+      this.ls.setItem("shopcart", this.myShopCart);
+      console.log("ls, shopcart\n", this.ls.getItem("shopcart"));
     });
   }
 
@@ -31,5 +33,4 @@ export default class PublicView {
   getBook(i) {
     return this.bookList[i];
   }
-
 }
