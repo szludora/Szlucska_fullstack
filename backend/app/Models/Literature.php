@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Literature extends Model
 {
     use HasFactory;
+    protected function setKeysForSaveQuery($query)
+    {
+        $query
+        ->where('authorId', '=', $this->getAttribute('user_id'));
+        return $query;
+    }
     protected $fillable = [
-        'author',
+        'authorId',
         'title',
         'evaluation',
         'description',
@@ -18,4 +24,5 @@ class Literature extends Model
         'created_at',
         'updated_at',
     ];
+    
 }

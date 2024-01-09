@@ -1,0 +1,30 @@
+.konyv{
+    min-height: 370px;
+    max-height: 370px;
+    background-color: rgba(255, 255, 255, 0.775);
+    min-width: 400px;
+}
+
+.termekek{
+    margin: 2%;
+}
+
+.btn-outline-primary{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cim, .szerzo{
+    min-height: 50px;
+}
+
+.kep{
+    position: relative;
+    max-width: 33%;
+    max-height: 66%;
+    min-width: 120px;
+    min-height: 180px;
+}
+

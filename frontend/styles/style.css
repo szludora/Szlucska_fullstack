@@ -1,3 +1,5 @@
+@import url("./slide.css");
+
 body {
     background-image: url(../imgs/rs3.jpg);
     background-size: cover;
@@ -12,3 +14,4 @@ body {
 .navbar-brand{
     transform: translateX(10px);
 }
+

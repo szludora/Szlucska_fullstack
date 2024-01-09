@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Literature;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,14 +14,13 @@ return new class extends Migration
     {
         Schema::create('literatures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author')->references('id')->on('users');
+            $table->foreignId('authorId')->references('id')->on('users');
             $table->string('title');
             $table->decimal('evaluation', 4, 1)->default('5');
-            $table->string('description')->default('There is no description for this literature');
+            $table->string('description')->default('Nincs hozzá leírás.');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

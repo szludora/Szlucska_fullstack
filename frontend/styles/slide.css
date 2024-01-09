@@ -1,0 +1,38 @@
+.leirasContainer {
+  position: relative;
+  width: 100%;
+}
+
+.kep {
+  display: block;
+  margin: auto;
+  height: auto;
+}
+
+.slide {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: #000000ce;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  color: white;
+  /* transition: .5s ease; */
+}
+
+
+.leirasContainer:hover .leiras {
+  color: white;
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-wrap: balance;
+}
+
+.leirasContainer:hover .slide {
+  width: 100%;
+  left: 0;
+}

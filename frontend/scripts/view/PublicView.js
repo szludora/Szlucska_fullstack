@@ -1,22 +1,33 @@
 export default class PublicView {
-  #formData = {};
-
-  constructor(list, parent) {
+  constructor(list, parent, users) {
     this.parent = parent;
     this.list = list;
-    console.log(list);
-    parent.html(`<div class="row"></div>`);
-    console.log(parent);
-    this.divElem = this.parent.find(".row");
-    this.makeHTML(list);
+    this.users = this.users;
+    parent.html(`<div class="row justify-content-center"></div>`);
+    this.sorElem = this.parent.find(".row");
+    this.makeHTML(list, users);
+    // console.log(users);
+    // console.log(list);
   }
 
-  makeHTML(list) {
+  makeHTML(list, users) {
     let bg = ``;
     for (const k in list) {
       const e = list[k];
-      let txt = `<div class="p-1 col-sm-6 col-md-4 col-lg-3"><div class="konyv bg-light rounded p-2 m-4 " style="position: relative">`;
-      txt += `<div class="cim fs-4">${e.title}</div>`;
+      // console.log("könyv:", e.title)
+      const elem = users[e.authorId - 1];
+      for (const x in elem) {
+        if (x == "name") {
+          var author = elem[x];
+        }
+      }
+      // console.log("író:", author)
+
+      let txt = `
+       <div class="konyv rounded p-1 m-5 col-sm-12 col-md-4 col-lg-2" style="position: relative">
+          <div class="konyvAdatlap">`;
+      txt += `
+            <div class="cim fs-4">${e.title}<br><div class="szerzo fs-6">${author}</viv></div>`;
       if (e.evaluation < 4) {
         bg = `bg-danger`;
       } else {
@@ -26,11 +37,19 @@ export default class PublicView {
           bg = `bg-success`;
         }
       }
-      txt += `<div class="ertekeles fs-6 position-absolute top-0 start-100 translate-middle badge rounded-pill ${bg}">${e.evaluation}</div>`;
-      txt += `<div class="leiras mt-2 fs-6 fst-italic mb-2">${e.description}</div>`;
-      txt += `<div class="kep mb-3"><img src="../../imgs/books/${e.id}.jpg"></div>`;
-      txt += `<button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Kosárba</button></div></div>`;
-      this.divElem.append(txt);
+      txt += `
+            <div class="ertekeles fs-5 position-absolute top-0 start-100 translate-middle badge rounded-pill ${bg}">${e.evaluation}</div>`;
+      txt += `
+            <div class="leirasContainer"><img class="kep" src="../../imgs/books/${e.id}.jpg">`;
+      txt += `
+              <div class="slide">
+                <div class="leiras mt-2 fs-6 fst-italic mb-2">${e.description}</div>
+              </div>
+            </div>`;
+      txt += `
+            <button class= "btn btn-outline-primary"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Kosárba</button>
+          </div>`;
+      this.sorElem.append(txt);
     }
   }
 }
