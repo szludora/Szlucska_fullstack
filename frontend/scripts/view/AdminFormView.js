@@ -19,7 +19,6 @@ export default class AdminFormView {
       const e = desc[k];
       switch (e.type) {
         case "id":
-          console.log(e)
         txt += `<div class="mb-4 m-auto"><input id="${e.id}" class="${e.class}" style="visibility: hidden"/></div>`;
           break;
         case "text":

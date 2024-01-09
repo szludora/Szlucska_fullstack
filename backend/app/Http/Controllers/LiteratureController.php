@@ -22,8 +22,12 @@ class LiteratureController extends Controller
     public function store(Request $request)
     {
         $lit = new Literature();
-        $lit->authorId = $request->authorId;
-        $lit->title = $request->title;
+        if ($request->authorId !== NULL) {
+            $lit->authorId = $request->authorId;
+        }
+        if ($request->title !== NULL) {
+            $lit->title = $request->title;
+        }
         if ($request->evaluation !== NULL) {
             $lit->evaluation = $request->evaluation;
         }
@@ -37,8 +41,12 @@ class LiteratureController extends Controller
     public function update(Request $request, $id)
     {
         $lit = Literature::find($id);
-        // $lit->authorId = $request->authorId;
-        $lit->title = $request->title;
+        if ($request->authorId !== NULL) {
+            $lit->authorId = $request->authorId;
+        }
+        if ($request->title !== NULL) {
+            $lit->title = $request->title;
+        }
         if ($request->evaluation !== NULL) {
             $lit->evaluation = $request->evaluation;
         }
@@ -47,7 +55,6 @@ class LiteratureController extends Controller
         }
         $lit->save();
         return Literature::all();
-
     }
 
     public function destroy($id)
