@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Foundation\Auth\User as AuthUser;
+use App\Http\Controllers\LiteratureController;
+use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('literatures/descriptor', [App\Http\Controllers\LiteratureController::class, 'descriptor']);
-Route::get('literatures', [App\Http\Controllers\LiteratureController::class, 'index']);
-Route::get('literatures/{id}', [App\Http\Controllers\LiteratureController::class, 'show']);
-Route::delete('literatures/{id}', [App\Http\Controllers\LiteratureController::class, 'destroy']);
-Route::post('literatures', [App\Http\Controllers\LiteratureController::class, 'store']);
-Route::put('literatures/{id}', [App\Http\Controllers\LiteratureController::class, 'update']);
-// Route::resource('literatures', App\Http\Controllers\LiteratureController::class); 
-Route::resource('users', App\Http\Controllers\UserController::class);
+// Route::get('literatures/descriptor', [LiteratureController::class, 'descriptor']);
+// Route::get('literatures', [LiteratureController::class, 'index']);
+// Route::get('literatures/{id}', [LiteratureController::class, 'show']);
+// Route::delete('literatures/{id}', [LiteratureController::class, 'destroy']);
+// Route::post('literatures', [LiteratureController::class, 'store']);
+// Route::put('literatures/{id}', [LiteratureController::class, 'update']);
+Route::resource('literatures', LiteratureController::class); 
+Route::resource('users', UserController::class);
 

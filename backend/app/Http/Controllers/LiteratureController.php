@@ -63,13 +63,10 @@ class LiteratureController extends Controller
                 'id' => 'id',
                 'type' => 'id',
                 'class' => 'form-control',
-                'label' => 'id',
             ],
             'authorId' => [
                 'id' => 'authorId',
-                'label' => 'Szerző',
-                'type' => 'text',
-                'placeholder' => 'Szerző',
+                'type' => 'id',
                 'class' => 'form-control'
             ],
             'title' => [

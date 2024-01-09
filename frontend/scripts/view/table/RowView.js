@@ -11,6 +11,7 @@ class RowView {
 
     this.deleteButton.on("click", (e) => {
       this.trigger("deleteRow");
+      console.log("törlés: ", e.detail)
     });
 
     this.modifyButton.on("click", (e) => {

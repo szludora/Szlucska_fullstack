@@ -39,12 +39,14 @@ export default class AdminFormView {
   getInfoForm() {
     this.idElem = this.formElem.find("#id");
     this.submitElem = this.formElem.find("#submit");
+    this.authorElem = this.formElem.find("#authorId");
     this.titleElem = this.formElem.find("#title");
     this.evaElem = this.formElem.find("#evaluation");
     this.textArea = this.formElem.find("textarea");
     this.submitElem.on("click", (event) => {
       event.preventDefault();
       this.#formData.id = this.idElem.val();
+      this.#formData.author = this.authorElem.val();
       this.#formData.title = this.titleElem.val();
       this.#formData.evaulation = this.evaElem.val();
       this.#formData.description = this.textArea.val();
@@ -56,7 +58,6 @@ export default class AdminFormView {
         console.log("post")
         this.trigger("postSubmit");
       }
-
     });
   }
 
@@ -66,9 +67,10 @@ export default class AdminFormView {
   }
 
   // e - element
-  modifyThis(e) {
+  modifyThis(e, desc) {
     this.formElem.find("#id").css("visibility", "visible");
     this.formElem.find("#id").val(e.id);
+    this.formElem.find("#authorId").val(e.author);
     this.formElem.find("#title").val(e.title);
     this.formElem.find("#description").val(e.description);
     this.formElem.find("#evaluation").val(e.evaluation);
