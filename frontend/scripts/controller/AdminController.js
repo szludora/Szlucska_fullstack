@@ -6,6 +6,7 @@ export default class AdminController {
   constructor() {
     let ds = new DataService();
     ds.getDescriptor("literatures/descriptor", (descriptor) => {
+      console.log(descriptor)
       let tableController = new TableController(ds, $(".tabla"), descriptor);
       let formController = new FormController(ds, $(".urlap"), descriptor);
     });

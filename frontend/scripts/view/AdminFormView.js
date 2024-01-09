@@ -19,7 +19,8 @@ export default class AdminFormView {
       const e = desc[k];
       switch (e.type) {
         case "id":
-          txt += `<div class="mb-4 m-auto"><input id="${e.id}" class="${e.class}" readonly style="visibility: hidden"/></div>`;
+          console.log(e)
+        txt += `<div class="mb-4 m-auto"><input id="${e.id}" class="${e.class}" style="visibility: hidden"/></div>`;
           break;
         case "text":
           txt += `<div class="mb-4 m-auto"><input id="${e.id}" class="${e.class}" placeholder="${e.placeholder}"/></div>`;
@@ -69,8 +70,9 @@ export default class AdminFormView {
   // e - element
   modifyThis(e, desc) {
     this.formElem.find("#id").css("visibility", "visible");
+    this.formElem.find("#authorId").css("visibility", "visible");
     this.formElem.find("#id").val(e.id);
-    this.formElem.find("#authorId").val(e.author);
+    this.formElem.find("#authorId").val(e.authorId);
     this.formElem.find("#title").val(e.title);
     this.formElem.find("#description").val(e.description);
     this.formElem.find("#evaluation").val(e.evaluation);
