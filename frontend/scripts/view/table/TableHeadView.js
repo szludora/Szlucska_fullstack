@@ -7,7 +7,12 @@ class TableHeadView {
     create() {
       let txt = `<tr>`;
       for (const key in this.#obj) {
-        txt += `<th>${this.#obj[key]['label']}</th>`;
+        if(key != "author_id"){
+
+          txt += `<th>${this.#obj[key]['label']}</th>`;
+        }else{
+          txt += `<th>${this.#obj[key]['placeholder']}</th>`;
+        }
       }
       txt += `<th>Műveletek</th><th></th>`
       txt += `</tr>`;

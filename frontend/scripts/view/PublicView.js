@@ -15,7 +15,8 @@ export default class PublicView {
     for (const k in list) {
       const e = list[k];
       // console.log("könyv:", e.title)
-      const elem = users[e.authorId - 1];
+      // IDE ÍRTAM
+      const elem = users[e.author_id - 1];
       for (const x in elem) {
         if (x == "name") {
           var author = elem[x];

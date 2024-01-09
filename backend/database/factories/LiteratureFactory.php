@@ -15,23 +15,23 @@ class LiteratureFactory extends Factory
      *
      * @return array<string, mixed>
      */
- 
+
         public function definition(): array
     {
         $repeats = 10;
         do {
-            $authorId = User::all()->random()->id;
-            $user = User::where('id', $authorId)
+            $author_id = User::all()->random()->id;
+            $user = User::where('id', $author_id)
                 ->get();
             $repeats--;
         } while ($repeats >= 0 && count($user) > 0);
 
         return [
-            'authorId' => $authorId,
+            'author_id' => $author_id,
             'title' => fake('hu_HU')->realText(15),
             'evaluation' => rand(0, 100) / 10,
             'description' => fake('hu_HU')->realText(200),
         ];
     }
     }
-    
+

@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('literatures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('authorId')->references('id')->on('users');
+            $table->foreignId('author_id')->references('id')->on('users');
             $table->string('title');
             $table->decimal('evaluation', 4, 1)->default('5');
             $table->string('description')->default('Nincs hozzá leírás.');

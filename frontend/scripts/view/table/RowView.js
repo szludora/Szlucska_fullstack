@@ -11,7 +11,7 @@ class RowView {
 
     this.deleteButton.on("click", (e) => {
       this.trigger("deleteRow");
-      console.log("törlés: ", e.detail)
+      console.log("törlés: ", e.detail);
     });
 
     this.modifyButton.on("click", (e) => {
@@ -22,7 +22,13 @@ class RowView {
   createRow() {
     let txt = `<tr>`;
     for (const key in this.#obj) {
-      txt += `<td>${this.#obj[key]}</td>`;
+      if (key == "author_id") {
+        txt += `<td>${this.#obj["user"].name}</td>`;
+      } else {
+        if (key != "user") {
+          txt += `<td>${this.#obj[key]}</td>`;
+        }
+      }
     }
     txt += `<td><button class="deleteButton btn btn-danger">Törlés</button></td><td><button class="modifyButton btn btn-primary">Módosít</button></td></tr>`;
     return txt;
@@ -32,8 +38,8 @@ class RowView {
     const event = new CustomEvent(e, { detail: this });
     window.dispatchEvent(event);
   }
-  getObj(){
-    return this.#obj
+  getObj() {
+    return this.#obj;
   }
 }
 export default RowView;

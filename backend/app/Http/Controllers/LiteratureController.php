@@ -11,7 +11,7 @@ class LiteratureController extends Controller
 {
     public function index()
     {
-        return Literature::all();
+        return Literature::with("user:id,name")->get();
     }
 
     public function show($id)
@@ -22,8 +22,10 @@ class LiteratureController extends Controller
     public function store(Request $request)
     {
         $lit = new Literature();
-        if ($request->authorId !== NULL) {
-            $lit->authorId = $request->authorId;
+        if ($request->author_id !== NULL) {
+            $lit->author_id = $request->author_id;
+        }else{
+            $lit->author_id = 0.0;
         }
         if ($request->title !== NULL) {
             $lit->title = $request->title;
@@ -35,14 +37,20 @@ class LiteratureController extends Controller
             $lit->description = $request->description;
         }
         $lit->save();
-        return Literature::all();
+        return Literature::with("user:id,name")->get();
     }
 
     public function update(Request $request, $id)
     {
+        // $valid = $request->validate([
+        //     'author_id' => '',
+        //     'title' => '',
+        //     'evaluation' => '',
+        //     'description' => '',
+        // ]);
         $lit = Literature::find($id);
-        if ($request->authorId !== NULL) {
-            $lit->authorId = $request->authorId;
+        if ($request->author_id !== NULL) {
+            $lit->author_id = $request->author_id;
         }
         if ($request->title !== NULL) {
             $lit->title = $request->title;
@@ -54,13 +62,13 @@ class LiteratureController extends Controller
             $lit->description = $request->description;
         }
         $lit->save();
-        return Literature::all();
+        return Literature::with("user:id,name")->get();
     }
 
     public function destroy($id)
     {
         Literature::find($id)->delete();
-        return Literature::all();
+        return Literature::with("user:id,name")->get();
     }
 
     public function descriptor()
@@ -72,10 +80,11 @@ class LiteratureController extends Controller
                 'label' => 'Id',
                 'class' => 'form-control',
             ],
-            'authorId' => [
-                'id' => 'authorId',
+            'author_id' => [
+                'id' => 'author_id',
                 'type' => 'id',
                 'label' => 'AuthorId',
+                'placeholder' => 'Szerző',
                 'class' => 'form-control'
             ],
             'title' => [

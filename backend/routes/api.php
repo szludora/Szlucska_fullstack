@@ -4,6 +4,7 @@ use App\Http\Controllers\LiteratureController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,5 @@ Route::get('literatures/descriptor', [LiteratureController::class, 'descriptor']
 // Route::put('literatures/{id}', [App\Http\Controllers\LiteratureController::class, 'update']);
 Route::resource('literatures', LiteratureController::class); 
 Route::resource('users', UserController::class);
-
+// Route::get('/post/create', [PostController::class, 'create']);
+// Route::post('/post', [PostController::class, 'store']);

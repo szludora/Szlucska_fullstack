@@ -20,14 +20,17 @@ export default class TableController {
         this.show(data, parent, descriptor);
       });
     });
+
     $(window).on("modify", (e) => {
-      // $(window).off("postSubmit");
       let endPoint = "literatures/" + e.detail.id;
       this.ds.getData(endPoint, (data) => {
+
         let form = new AdminFormView($(".urlap"), descriptor);
-        form.modifyThis(data, descriptor);
+
+        form.modifyThis(data, descriptor, ds);
         $(window).on("putSubmit", (e) => {
           this.ds.putData(e.detail, "literatures", e.detail.id, (data) => {
+
             this.show(data, parent, descriptor);
           });
         });
@@ -42,4 +45,5 @@ export default class TableController {
   errorMessage(error) {
     console.log("Error message: ", error);
   }
+
 }

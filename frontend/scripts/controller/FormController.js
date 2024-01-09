@@ -4,6 +4,7 @@ export default class FormController {
   constructor(ds, parent, desc) {
     this.ds = ds;
     this.form = new AdminFormView(parent, desc);
+    this.form.getUsersDropdown(ds)
  
   }
 }

@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Literature extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'authorId',
+        'author_id',
         'title',
         'evaluation',
         'description',
@@ -19,5 +20,10 @@ class Literature extends Model
         'created_at',
         'updated_at',
     ];
-    
+
+    public function user(): BelongsTo
+    {
+       return $this->belongsTo(User::class, 'author_id');
+    }
+
 }

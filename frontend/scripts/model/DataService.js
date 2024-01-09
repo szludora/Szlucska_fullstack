@@ -34,6 +34,7 @@ export default class DataService {
   }
 
   postData(data, vegpont, callback) {
+    console.log(vegpont, JSON.stringify(data));
     axios
       .post(vegpont, data)
       .then(function (response) {
@@ -69,7 +70,6 @@ export default class DataService {
         console.log(error);
       })
       .finally(function () {
-        console.log(vegpont, id, callback);
       });
   }
 }
