@@ -56,7 +56,9 @@ export default class DataService {
       .catch(function (error) {
         console.log(error);
       })
-      .finally(function () {});
+      .finally(function () {
+        console.log(response);
+      });
   }
 
   delData(vegpont, id, callback) {
@@ -68,6 +70,6 @@ export default class DataService {
       .catch(function (error) {
         console.log(error);
       })
-      .finally(function () {});
+      .finally(function () {console.log(vegpont, id, callback)});
   }
 }
