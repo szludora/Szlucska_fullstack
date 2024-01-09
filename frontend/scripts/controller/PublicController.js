@@ -7,10 +7,10 @@ export default class PublicController {
     ds.getDescriptor("literatures/descriptor", (desc) => {
       ds.getData("literatures", (bookList) => {
         ds.getData("users", (users) => {
-          let view = new PublicView(bookList, $(".termekek"), users);
+          var view = new PublicView(bookList, $(".termekek"), ds);
           return view;
         });
       });
     });
-  }
+}
 }
